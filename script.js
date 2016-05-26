@@ -1,7 +1,3 @@
-var why = "Because";
-
-document.write(why);
-document.write(doStuff("<br>Nice ", "Job ", "JS"));
 var numbs = [];
 
 function doStuff(write, cool, thing){
