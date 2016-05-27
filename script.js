@@ -23,16 +23,16 @@ function InputNum(){
   	else{
     var med= numbs[(numbs.length-1)/2]
   	}
-	var biggest=0;
+	var highest=0;
   if(modes[0]==null){
     modes[0]=0;
   }
   for(var i=0; i<modes.length;i++){
-    if(modes[i]>modes[biggest]){
-      biggest=i;
+    if(modes[i]>modes[highest]){
+      highest=i;
     }
   }
   var mean = added/numbs.length;
-  var body = document.getElementById("output")
-  body.innerHTML=body.innerHTML+"<br><br>"+nums+"<br>Mean:"+mean+"<br>Median:"+med+"<br>Mode:"+biggest;
+  var output = document.getElementById("output")
+  output.innerHTML=output.innerHTML+"<br><br>"+numbs+"<br>Mean:"+mean+"<br>Median:"+med+"<br>Mode:"+highest;
 }
