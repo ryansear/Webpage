@@ -1,54 +1,38 @@
-var numbs = [];
-
+document.write(doStuff());
 function doStuff(write, cool, thing){
 return write + cool + thing;
 }
 
 function InputNum(){
 	var nums = prompt("Please enter numbers seperated by commas");
-	var nums1= nums.split(",");
-	for(var i = 0; i<nums1.length; i++){
-		var n = parseInt(nums1[i]);
-		numbs.push(n);
-	}
-	return true;
-}
-
-function Mean(){
-	var added;
+	var numbs = nums.split(',');
+	var added = 0;
+	var modes=[];
 	for(var i = 0; i<numbs.length; i++){
+		numbs[i] = parseInt(numbs[i]);
 		added += numbs[i];
+		if(modes[numbs[i]]==null){
+    		modes[numbs[i]]=0;
+    	}
+    	modes[numbs[i]]++;
 	}
-	var mean = (added/numbs.length);
-window.alert(mean);
-return true;
-}
-
-function Median(){
-numbs.sort();
-window.alert(numbs[numbs.length/2]);
-return true;
-}
-
-function Mode(){
-	var num3 = [];
-	var times = [];
-	for(var i = 0; i<numbs.length; i++){
-		if(numbs.indexOf(numbs[i]) = -1){
-			num3.push(numbs[i]);
-			times.push(1);
-		}
-		else{
-			times[num3.indexOf(numbs[i])] += 1;
-		}
-
-	}
-	var highest = 0;
-	for(var i = 0; i<times.length; i++){
-		if(times[i]>times[highest]){
-			highest = i;
-		}
-	}
-	window.alert(num3[highest]);
-	return true;
+	numbs.sort();
+	if(numbs.length%2==0){
+    var med= (numbs[numbs.length/2]+numbs[numbs.length/2-1])/2
+  	}
+  	else{
+    var med= numbs[(numbs.length-1)/2]
+  	}
+	var biggest=0;
+  if(modes[0]==null){
+    modes[0]=0;
+  }
+  for(var i=0; i<modes.length;i++){
+    if(modes[i]>modes[biggest]){
+      biggest=i;
+    }
+  }
+  var mean = added/numbs.length;
+  var body = document.getElementById("output")
+  body.innerHTML=body.innerHTML+"<br><br>"+nums+"<br>Mean:"+mean+"<br>Median:"+med+"<br>Mode:"+biggest;
 }
